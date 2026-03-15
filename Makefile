@@ -1,5 +1,13 @@
+setup:
+    poetry install
+    poetry run python manage.py migrate
+
+
 install-deps: 
 	poetry install
+
+install-prod: 
+	poetry install --only main
 
 
 run-app: 
@@ -32,3 +40,10 @@ migrate:
 
 create-superuser:
 	poetry run python manage.py createsuperuser
+
+
+lint:
+    poetry run ruff check .
+
+lint-fix:
+    poetry run ruff check . --fix
