@@ -7,6 +7,9 @@ class Profile(models.Model):
     instagram = models.URLField(blank=True)
     bio = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class Email(models.Model):
     profile = models.ForeignKey(
