@@ -20,8 +20,8 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-lenght = 88
+line-length = 88
 
 [tool.ruff]
-line-lenght = 88
-target-version = "py311
+line-length = 88
+target-version = "py311"

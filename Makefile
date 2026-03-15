@@ -1,34 +1,29 @@
-setup:
-    poetry install
-    poetry run python manage.py migrate
-
-
-install-deps: 
+install-deps:
 	poetry install
 
-install-prod: 
+install-prod:
 	poetry install --only main
 
 
-run-app: 
+run-app:
 	poetry run python manage.py runserver
 
 
-django-version: 
+django-version:
 	poetry run python -m django --version
 
-django-poetry: 
+django-poetry:
 	poetry show django
 
 
-start-project: 
+start-project:
 	poetry run python -m django-admin startproject manage .
 
-start-project2: 
+start-project2:
 	poetry run django-admin startproject manage .
 
 
-start-app: 
+start-app:
 	poetry run django-admin startapp core
 
 
@@ -43,7 +38,7 @@ create-superuser:
 
 
 lint:
-    poetry run ruff check .
+	poetry run ruff check .
 
 lint-fix:
-    poetry run ruff check . --fix
+	poetry run ruff check . --fix
