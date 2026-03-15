@@ -22,3 +22,10 @@ start-project2:
 
 start-app: 
 	poetry run django-admin startapp core
+
+
+makemigrations:
+	poetry run python manage.py makemigrations
+
+migrate:
+	poetry run python manage.py migrate
