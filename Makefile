@@ -52,3 +52,9 @@ coverage:
 
 coverage-core:
 	poetry run pytest --cov=core --cov-report=term --cov-report=html
+
+django-help:
+	poetry run python manage.py help
+
+django-shell:
+	poetry run python manage.py shell
