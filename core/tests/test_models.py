@@ -26,3 +26,15 @@ def test_email_str():
     )
 
     assert str(email) == _email
+
+@pytest.mark.django_db
+def test_profile_with_multiple_emails():
+    profile = Profile.objects.create(
+        name="Julio",
+        bio="Backend Developer",
+    )
+
+    Email.objects.create(profile=profile, email="amado.amoroso@email.com")
+    Email.objects.create(profile=profile, email="funky.monkey@dominio.com")
+
+    assert profile.emails.count() == 2
