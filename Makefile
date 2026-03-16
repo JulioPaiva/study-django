@@ -42,3 +42,13 @@ lint:
 
 lint-fix:
 	poetry run ruff check . --fix
+
+
+tests:
+	poetry run pytest
+
+coverage:
+	poetry run pytest --cov
+
+coverage-core:
+	poetry run pytest --cov=core --cov-report=term --cov-report=html

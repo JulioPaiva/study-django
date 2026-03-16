@@ -1,6 +1,6 @@
 import pytest
 
-from core.models import Profile
+from core.models import Email, Profile
 
 
 @pytest.mark.django_db
@@ -11,3 +11,18 @@ def test_profile_str():
     )
 
     assert str(profile) == "Julio"
+
+@pytest.mark.django_db
+def test_email_str():
+    _email = "juliopaiva.ti@gmail.com"
+    profile = Profile.objects.create(
+        name="Julio",
+        bio="Backend Developer",
+    )
+
+    email = Email.objects.create(
+        profile=profile,
+        email=_email
+    )
+
+    assert str(email) == _email
