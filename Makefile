@@ -42,7 +42,9 @@ lint:
 
 lint-fix:
 	poetry run ruff check . --fix
-    poetry run ruff format .
+
+lint-format:
+	poetry run ruff format .
 
 
 tests:

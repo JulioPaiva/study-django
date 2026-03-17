@@ -87,7 +87,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator", # NOQA
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # NOQA
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # NOQA
@@ -116,5 +116,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = "static/"
-STATIC_ROOT = os.path(BASE_DIR, "staticfiles")
+STATIC_URL = "static/"  # development
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # production
+
+LOGOUT_REDIRECT_URL = "/"
