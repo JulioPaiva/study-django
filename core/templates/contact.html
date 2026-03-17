@@ -1,0 +1,25 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Contato</title>
+        {% bootstrap_css %}
+    </head>
+
+    <body>
+        <h1>Contato</h1>
+
+        {% bootstrap_messages %}
+
+        <form action="{% url 'contact' %}" class="form" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% bootstrap_button button_type="submit" content="Enviar" %}
+            {% bootstrap_button button_type="reset" content="Cancelar" %}
+        </form>
+
+        {% bootstrap_javascript %}
+    </body>
+</html>
