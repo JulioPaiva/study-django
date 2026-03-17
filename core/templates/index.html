@@ -9,5 +9,10 @@
         <h1>Index</h1>
 
         <h2>{{ key }}</h2>
+
+        {% for profile in profiles %}
+            <p>{{ profile.name }}</p>
+        {% endfor %}
+
     </body>
 </html>

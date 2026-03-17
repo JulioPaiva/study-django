@@ -12,6 +12,7 @@ def test_profile_str():
 
     assert str(profile) == "Julio"
 
+
 @pytest.mark.django_db
 def test_email_str():
     _email = "juliopaiva.ti@gmail.com"
@@ -20,12 +21,10 @@ def test_email_str():
         bio="Backend Developer",
     )
 
-    email = Email.objects.create(
-        profile=profile,
-        email=_email
-    )
+    email = Email.objects.create(profile=profile, email=_email)
 
     assert str(email) == _email
+
 
 @pytest.mark.django_db
 def test_profile_with_multiple_emails():

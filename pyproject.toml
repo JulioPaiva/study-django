@@ -29,6 +29,9 @@ line-length = 88
 line-length = 88
 target-version = "py311"
 
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "manage.settings"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]

@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Profile(models.Model):
-    name = models.CharField('Nome', max_length=100)
+    name = models.CharField("Nome", max_length=100)
     github = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
     bio = models.TextField()
@@ -13,9 +13,7 @@ class Profile(models.Model):
 
 class Email(models.Model):
     profile = models.ForeignKey(
-        Profile,
-        on_delete=models.CASCADE,
-        related_name='emails'
+        Profile, on_delete=models.CASCADE, related_name="emails"
     )
     email = models.EmailField()
     label = models.CharField(max_length=50, blank=True)
