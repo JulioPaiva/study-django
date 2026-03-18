@@ -34,6 +34,8 @@ def contact(request):
             )
 
             messages.success(request, "Mensagem enviada com sucesso!")
+
+            form = ContactForm()
         else:
             messages.error(
                 request,
