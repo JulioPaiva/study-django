@@ -1,7 +1,8 @@
+from django.contrib import messages
 from django.shortcuts import render
-from django.contrib import messages 
 
 from core.models import Profile
+
 from .forms import ContactForm
 
 
@@ -12,6 +13,7 @@ def index(request):
         "key": profiles,
     }
     return render(request, "index.html", context)
+
 
 def contact(request):
     form = ContactForm(request.POST or None)
@@ -35,7 +37,7 @@ def contact(request):
         else:
             messages.error(
                 request,
-                "Formulário inválido. Por favor, corrija os erros e tente novamente." # NOQA
+                "Formulário inválido. Por favor, corrija os erros e tente novamente.",  # NOQA
             )
 
     context = {
