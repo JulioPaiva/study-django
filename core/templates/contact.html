@@ -12,7 +12,7 @@
 
         {% bootstrap_messages %}
 
-        <form action="{% url 'contact' %}" class="form" method="post">
+        <form action="{% url 'contact' %}" class="form" method="post" autocomplete="off">
             {% csrf_token %}
             {% bootstrap_form form %}
 
