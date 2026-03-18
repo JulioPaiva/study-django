@@ -1,18 +1,36 @@
+{% load static %}
+{% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <meta charset="UTF-8">
-        <title>Index</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Profile</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        
     </head>
 
     <body>
-        <h1>Index</h1>
+        <div class="container">
+            <p>Olá!<span> Seja bem-vindo(a)!</span></p>
 
-        <h2>{{ key }}</h2>
+            {% for attribute in key %}
+                <p>Eu sou o <span> {{ attribute }}</span></p>
+            {% endfor %}
 
-        {% for profile in profiles %}
-            <p>{{ profile.name }}</p>
-        {% endfor %}
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a href="{% url 'contact' %}" class="nav-link">Contato</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
+                </li>
+            </ul>
+        </div>
+
+    {% bootstrap_javascript %}
 
     </body>
 </html>

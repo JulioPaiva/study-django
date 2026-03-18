@@ -1,24 +1,33 @@
+{% load static %}
 {% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <title>Contato</title>
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
         {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>
-        <h1>Contato</h1>
-
         {% bootstrap_messages %}
 
-        <form action="{% url 'contact' %}" class="form" method="post" autocomplete="off">
-            {% csrf_token %}
-            {% bootstrap_form form %}
+        <div class="container">
+            <div class="row row-form">
 
-            {% bootstrap_button button_type="submit" content="Enviar" %}
-            {% bootstrap_button button_type="reset" content="Cancelar" %}
-        </form>
+                <h1>Contato</h1>
+
+                <form action="{% url 'contact' %}" class="form" method="post" autocomplete="off">
+                    {% csrf_token %}
+                    {% bootstrap_form form show_label=False%}
+
+                    {% bootstrap_button button_type="submit" content="Enviar" %}
+                    {% bootstrap_button button_type="reset" content="Limpar" %}
+                    <a href="{% url 'profile' %}" class="btn btn-secondary">Voltar</a>
+                </form>
+            </div>
+        </div>
 
         {% bootstrap_javascript %}
     </body>

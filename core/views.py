@@ -6,7 +6,7 @@ from core.models import Profile
 from .forms import ContactForm
 
 
-def index(request):
+def profile(request):
     profiles = Profile.objects.all()
 
     context = {
