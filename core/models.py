@@ -1,6 +1,14 @@
 from django.db import models
 
 
+class Base(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        abstract = True
+
 class Profile(models.Model):
     name = models.CharField("Nome", max_length=100)
     github = models.URLField(blank=True)

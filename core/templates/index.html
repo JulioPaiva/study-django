@@ -15,40 +15,9 @@
     <body>
         <div class="container">
             <p>Olá!<span> Seja bem-vindo(a)!</span></p>
-
-            {% for attribute in key %}
-                <p>Eu sou o <span> {{ attribute }}</span></p>
-            {% endfor %}
-
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a href="{% url 'contact' %}" class="nav-link">Contato</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">Projetos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled">Skills</a>
-                </li>
-                {% comment %} <li class="nav-item">
-                    <a href="#" class="nav-link disabled">Aprendizados</a>
-                </li> {% endcomment %}
-                <li class="nav-item">
-                    <a href="#" class="nav-link disabled ">Persona</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'recommendation' %}" class="nav-link">Recomendações</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'admin:index' %}" class="nav-link">Admin</a>
-                </li>
-            </ul>
         </div>
 
-    {% bootstrap_javascript %}
+        {% bootstrap_javascript %}
 
     </body>
 </html>

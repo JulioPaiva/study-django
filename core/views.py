@@ -1,10 +1,14 @@
 from django.contrib import messages
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from core.models import Profile, Recommendation
 
 from .forms import ContactForm
 
+
+class IndexView(TemplateView):
+    template_name = "index.html"
 
 def profile(request):
     profiles = Profile.objects.all()
@@ -12,7 +16,7 @@ def profile(request):
     context = {
         "key": profiles,
     }
-    return render(request, "index.html", context)
+    return render(request, "profile.html", context)
 
 
 def contact(request):
