@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render
 
-from core.models import Profile
+from core.models import Profile, Recommendation
 
 from .forms import ContactForm
 
@@ -34,3 +34,13 @@ def contact(request):
     }
 
     return render(request, "contact.html", context)
+
+
+def recommendation(request):
+    recommendations = Recommendation.objects.all()
+
+    context = {
+        "recommendations": recommendations,
+    }
+
+    return render(request, "recommendation.html", context)

@@ -21,3 +21,24 @@ class Email(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Recommendation(models.Model):
+    RESOURCE_TYPE = [
+        ("BOOK", "Livro"),
+        ("ARTICLE", "Artigo"),
+        ("VIDEO", "Vídeo"),
+        ("COURSE", "Curso"),
+        ("COURSE", "Ferramenta"),
+        ("LINK", "Link"),
+        ("OTHER", "Outro"),
+    ]
+
+    title = models.CharField("Título", max_length=100)
+    url = models.URLField("URL", blank=True)
+    description = models.TextField()
+    resource_type = models.CharField(max_length=20, choices=RESOURCE_TYPE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title}, {self.url}, {self.description}, {self.resource_type}"

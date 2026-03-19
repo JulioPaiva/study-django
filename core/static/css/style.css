@@ -27,3 +27,7 @@ span {
     font-weight: bold;
     font-size: 3em;
 }
+
+.card {
+    margin: 20px auto;
+}
