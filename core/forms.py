@@ -34,9 +34,7 @@ class ContactForm(forms.Form):
 
         try:
             email_message.send()
-            logger.info(
-                f"E-mail enviado com sucesso para: {self.cleaned_data['email']}"
-            )
+            logger.debug(f"E-mail enviado com sucesso de: {email_contact}")
         except Exception as e:
             logger.error(f"Erro ao enviar e-mail. Erro: {str(e)}", exc_info=True)
             raise e

@@ -143,7 +143,7 @@ LOGGING = {
     },
     "handlers": {
         "console": {
-            "level": "DEBUG",
+            "level": os.getenv("LOG_LEVEL", "DEBUG"),
             "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
