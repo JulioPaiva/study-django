@@ -10,18 +10,18 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-class Profile(models.Model):
+class Profile(Base):
     name = models.CharField("Nome", max_length=100)
     github = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
     bio = models.TextField(blank=True)
-    # position = models.CharField("Cargo", max_length=100, blank=True)
+    position = models.CharField("Cargo", max_length=100, blank=True)
 
     def __str__(self):
         return f"{self.name}, {self.github}, {self.instagram}, {self.bio}"
 
 
-class Email(models.Model):
+class Email(Base):
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, related_name="emails"
     )
