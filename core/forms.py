@@ -1,5 +1,10 @@
+import logging
+
 from django import forms
+from django.conf import settings
 from django.core.mail.message import EmailMessage
+
+logger = logging.getLogger("app")
 
 
 class ContactForm(forms.Form):
@@ -9,17 +14,29 @@ class ContactForm(forms.Form):
     message = forms.CharField(label="Mensagem", widget=forms.Textarea)
 
     def send_mail(self):
-        name = self.cleaned_data["name"]
-        email = self.cleaned_data["email"]
-        subject = self.cleaned_data["subject"]
-        message = self.cleaned_data["message"]
+        email_contact = self.cleaned_data["email"]
+        logger.info(f"Tentando enviar e-mail de: {email_contact}")
 
-        email_message = EmailMessage(
-            subject=subject,
-            body=f"Nome: {name}\nEmail: {email}\n\n{message}",
-            from_email="contato@seudominio.com.br",
-            to=["contato@seudominio.com.br"],
-            headers={"Reply-To": email},
+        content = (
+            f"Nome: {self.cleaned_data['name']}\n"
+            f"Email: {email_contact}\n"
+            f"Assunto: {self.cleaned_data['subject']}\n\n"
+            f"Mensagem:\n{self.cleaned_data['message']}"
         )
 
-        email_message.send()
+        email_message = EmailMessage(
+            subject=f"Contato do site: {self.cleaned_data['subject']}",
+            body=content,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[settings.DEFAULT_FROM_EMAIL],
+            headers={"Reply-To": email_contact},
+        )
+
+        try:
+            email_message.send()
+            logger.info(
+                f"E-mail enviado com sucesso para: {self.cleaned_data['email']}"
+            )
+        except Exception as e:
+            logger.error(f"Erro ao enviar e-mail. Erro: {str(e)}", exc_info=True)
+            raise e

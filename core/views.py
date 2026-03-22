@@ -1,9 +1,14 @@
+import logging
+
 from django.contrib import messages
-from django.views.generic import FormView
 from django.urls import reverse_lazy
+from django.views.generic import FormView
+
 from core.models import Profile
 
 from .forms import ContactForm
+
+logger = logging.getLogger("app")
 
 
 class IndexView(FormView):
@@ -16,12 +21,21 @@ class IndexView(FormView):
         context["profile"] = Profile.objects.first()
 
         return context
-    
+
     def form_valid(self, form, *args, **kwargs):
-        form.send_mail()
-        messages.success(self.request, "E-mail enviado com sucesso!")
+        try:
+            form.send_mail()
+            messages.success(self.request, "E-mail enviado com sucesso!")
+            logger.info("Fluxo de contato finalizado com sucesso.")
+
+        except Exception as e:
+            logger.error(f"Erro ao enviar e-mail. Erro: {str(e)}", exc_info=True)
+            messages.error(self.request, "Erro ao enviar e-mail")
+            raise e
+
         return super(IndexView, self).form_valid(form, *args, **kwargs)
 
     def form_invalid(self, form, *args, **kwargs):
-        messages.success(self.request, "Erro ao enviar e-mail")
+        logger.warning(f"Tentativa de envio inválida: {form.errors.as_json()}")
+        messages.error(self.request, "Erro ao enviar e-mail")
         return super(IndexView, self).form_invalid(form, *args, **kwargs)
