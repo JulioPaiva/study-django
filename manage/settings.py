@@ -128,9 +128,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # production
 
 LOGOUT_REDIRECT_URL = "/"
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "juliopaiva.ti@gmail.com")
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", DEFAULT_FROM_EMAIL)
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
+
 
 LOGGING = {
     "version": 1,
@@ -153,10 +158,9 @@ LOGGING = {
             "handlers": ["console"],
             "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
         },
-        # Seu logger customizado para a sua App
         "app": {
             "handlers": ["console"],
-            "level": "DEBUG",
+            "level": os.getenv("APP_LOG_LEVEL", "DEBUG"),
             "propagate": True,
         },
     },
