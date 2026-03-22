@@ -61,3 +61,7 @@ django-help:
 
 django-shell:
 	poetry run python manage.py shell
+
+
+collectstatic:
+	poetry run python manage.py collectstatic
