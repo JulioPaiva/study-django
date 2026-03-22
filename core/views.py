@@ -1,50 +1,27 @@
 from django.contrib import messages
-from django.shortcuts import render
-from django.views.generic import TemplateView
-
-from core.models import Profile, Recommendation
+from django.views.generic import FormView
+from django.urls import reverse_lazy
+from core.models import Profile
 
 from .forms import ContactForm
 
 
-class IndexView(TemplateView):
+class IndexView(FormView):
     template_name = "index.html"
+    form_class = ContactForm
+    success_url = reverse_lazy("index")
 
-def profile(request):
-    profiles = Profile.objects.all()
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context["profile"] = Profile.objects.first()
 
-    context = {
-        "key": profiles,
-    }
-    return render(request, "profile.html", context)
+        return context
+    
+    def form_valid(self, form, *args, **kwargs):
+        form.send_mail()
+        messages.success(self.request, "E-mail enviado com sucesso!")
+        return super(IndexView, self).form_valid(form, *args, **kwargs)
 
-
-def contact(request):
-    form = ContactForm(request.POST or None)
-
-    if str(request.method).upper() == "POST":
-        if form.is_valid():
-            form.send_mail()
-            messages.success(request, "Mensagem enviada com sucesso!")
-            form = ContactForm()
-        else:
-            messages.error(
-                request,
-                "Formulário inválido. Por favor, corrija os erros e tente novamente.",  # NOQA
-            )
-
-    context = {
-        "form": form,
-    }
-
-    return render(request, "contact.html", context)
-
-
-def recommendation(request):
-    recommendations = Recommendation.objects.all()
-
-    context = {
-        "recommendations": recommendations,
-    }
-
-    return render(request, "recommendation.html", context)
+    def form_invalid(self, form, *args, **kwargs):
+        messages.success(self.request, "Erro ao enviar e-mail")
+        return super(IndexView, self).form_invalid(form, *args, **kwargs)

@@ -1,23 +1,15 @@
+{% extends 'base.html'  %}
 {% load static %}
-{% load django_bootstrap5 %}
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Profile</title>
-        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-        {% bootstrap_css %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        
-    </head>
+{% block content %}
 
-    <body>
-        <div class="container">
-            <p>Olá!<span> Seja bem-vindo(a)!</span></p>
-        </div>
+    {% include 'profile.html' %}
 
-        {% bootstrap_javascript %}
+    {% include 'skills.html' %}
 
-    </body>
-</html>
+    {% include 'about.html' %}
+
+    {% include 'contact.html' %}
+
+    {% include 'footer.html' %}
+
+{% endblock %}

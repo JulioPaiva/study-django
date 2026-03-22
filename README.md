@@ -8,3 +8,5 @@ https://onepagelove.com/
 https://django-bootstrap5.readthedocs.io/en/latest/quickstart.html
 
 https://meyerweb.com/eric/tools/css/reset/
+
+git semânticos

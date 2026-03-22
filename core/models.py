@@ -1,4 +1,5 @@
 from django.db import models
+from stdimage.models import StdImageField
 
 
 class Base(models.Model):
@@ -13,10 +14,11 @@ class Profile(models.Model):
     name = models.CharField("Nome", max_length=100)
     github = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
-    bio = models.TextField()
+    bio = models.TextField(blank=True)
+    # position = models.CharField("Cargo", max_length=100, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}, {self.github}, {self.instagram}, {self.bio}"
 
 
 class Email(models.Model):
@@ -29,24 +31,3 @@ class Email(models.Model):
 
     def __str__(self):
         return self.email
-
-
-class Recommendation(models.Model):
-    RESOURCE_TYPE = [
-        ("BOOK", "Livro"),
-        ("ARTICLE", "Artigo"),
-        ("VIDEO", "Vídeo"),
-        ("COURSE", "Curso"),
-        ("COURSE", "Ferramenta"),
-        ("LINK", "Link"),
-        ("OTHER", "Outro"),
-    ]
-
-    title = models.CharField("Título", max_length=100)
-    url = models.URLField("URL", blank=True)
-    description = models.TextField()
-    resource_type = models.CharField(max_length=20, choices=RESOURCE_TYPE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.title}, {self.url}, {self.description}, {self.resource_type}"

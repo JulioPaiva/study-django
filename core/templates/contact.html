@@ -1,34 +1,57 @@
 {% load static %}
-{% load django_bootstrap5 %}
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Contato</title>
-        <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-        {% bootstrap_css %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    </head>
 
-    <body>
-        {% bootstrap_messages %}
+<section id="contact" class="contact section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Contato</h2>
+        <p>Fale conosco</p>
+    </div>
 
-        <div class="container">
-            <div class="row row-form">
-
-                <h1>Contato</h1>
-
-                <form action="{% url 'contact' %}" class="form" method="post" autocomplete="off">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+            <div class="col-lg-5">
+                <div class="info-wrap">
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                        <i class="bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Ligue</h3>
+                            <p>+55 16 9 9275-5748</p>
+                        </div>
+                    </div>
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>juliopaiva.ti@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <form action="{% url 'index' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
                     {% csrf_token %}
-                    {% bootstrap_form form show_label=False%}
-
-                    {% bootstrap_button button_type="submit" content="Enviar" %}
-                    {% bootstrap_button button_type="reset" content="Limpar" %}
-                    <a href="{% url 'profile' %}" class="btn btn-secondary">Voltar</a>
+                    <div class="row gy-4">
+                        <div class="col-md-6">
+                            <label for="name-field" class="pb-2">Seu Name</label>
+                            <input type="text" name="name" id="name-field" class="form-control" required="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email-field" class="pb-2">Seu Email</label>
+                            <input type="email" class="form-control" name="email" id="email-field" required="">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="subject-field" class="pb-2">Assunto</label>
+                            <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="message-field" class="pb-2">Mensagem</label>
+                            <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
-
-        {% bootstrap_javascript %}
-    </body>
-</html>
+    </div>
+</section>
