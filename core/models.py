@@ -18,7 +18,9 @@ class Profile(Base):
     position = models.CharField("Cargo", max_length=100, blank=True)
 
     def __str__(self):
-        return f"{self.name}, {self.github}, {self.instagram}, {self.bio}"
+        return (
+            f"{self.name}, {self.github}, {self.instagram}, {self.bio}, {self.position}"
+        )
 
 
 class Email(Base):

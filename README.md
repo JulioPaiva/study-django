@@ -14,3 +14,6 @@ from django.core.management.utils import get_random_secret_key
 print(get_random_secret_key())
 
 https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4M6-obTZa8vlaJFSNlxIZO5XmlK_JWxOzBeYDXvhjLs1Or3mqgGlG_iw8HfUjcoTc9FTvL3jO59hCLoqEw793SBTzMcrzUvwBRozZHiwuf9qcUgYf4
+
+
+https://hub.asimov.academy/diretrizes-de-criacao-de-conteudo/

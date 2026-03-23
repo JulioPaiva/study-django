@@ -47,8 +47,11 @@ lint-format:
 	poetry run ruff format .
 
 
-tests:
+test:
 	poetry run pytest
+
+test-matching:
+	poetry run pytest -k $(k)
 
 coverage:
 	poetry run pytest --cov
