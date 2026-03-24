@@ -14,14 +14,18 @@
                         <i class="bi bi-telephone flex-shrink-0"></i>
                         <div>
                             <h3>Ligue</h3>
-                            <p>+55 16 9 9275-5748</p>
+                            {% for phone in phones %}
+                                <p>{{phone.number}}</p>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h3>Email</h3>
-                            <p>juliopaiva.ti@gmail.com</p>
+                            {% for email in emails %}
+                                <p>{{email.email}}</p>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

@@ -7,22 +7,22 @@ from core.models import Profile
 def profile_payload() -> dict:
     return {
         "name": "Julio",
+        "nickname": "Jul.io",
         "github": "https://github.com/julio",
         "instagram": "instagram",
+        "linkedin": "linkedin",
+        "video": "video",
+        "brand": "brand",
         "bio": "bio",
+        "message": "message",
         "position": "Backend Developer",
+        "welcome_message": "Bem-vindo ao meu perfil!",
     }
 
 
 @pytest.fixture
 def profile_factory(profile_payload) -> Profile:
-    return Profile.objects.create(
-        name=profile_payload["name"],
-        github=profile_payload["github"],
-        instagram=profile_payload["instagram"],
-        bio=profile_payload["bio"],
-        position=profile_payload["position"],
-    )
+    return Profile.objects.create(**profile_payload)
 
 
 @pytest.fixture

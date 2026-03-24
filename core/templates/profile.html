@@ -6,13 +6,17 @@
             <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
                 <h1>Seja Bem-Vindo(a)!</h1>
                 {% if profile %}
-                    <p><b> {{profile.name}}</b> - {{profile.bio}}</p>
+                    <p><b> {{profile.nickname}}</b> - {{profile.position}}</p>
                 {% else %}
                     <p><b> Júlio Paiva</b> - Backend Developer</p>
                 {% endif %}
                 <div class="d-flex">
-                <a href="{{profile.github}}" class="btn-get-started">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=_WkvWLbKh9M" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Assita ao Vídeo</span></a>
+                {% if profile %}
+                    <a href="{{profile.github}}" target="_blank" class="btn-get-started">GitHub</a>
+                    <a href="{{profile.video}}" class="glightbox btn-watch-video d-flex align-items-center">
+                        <i class="bi bi-play-circle"></i><span>Assita ao Vídeo</span>
+                    </a>
+                {% endif %}
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
