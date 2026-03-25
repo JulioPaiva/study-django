@@ -40,13 +40,11 @@
                 }
           </script>
           <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide"><img src="{% static 'img/skills/django.webp' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'img/skills/python.webp' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'img/skills/mysql.webp' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'img/skills/pgsql.webp' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'img/skills/git.webp' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'img/skills/html.webp' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'img/skills/sqlite.webp' %}" class="img-fluid" alt=""></div>
+            {% for skill in skills %}
+                <div class="swiper-slide">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{ skill.image }}" />
+                </div>
+            {% endfor %}
             </div>
         </div>
     </div>

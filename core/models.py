@@ -78,3 +78,15 @@ class Services(Base):
 
     def __str__(self):
         return self.name
+
+
+class Skills(Base):
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name="stack"
+    )
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    image = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name

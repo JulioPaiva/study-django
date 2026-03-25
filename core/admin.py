@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Email, Phone, Profile, Services
+from .models import Email, Phone, Profile, Services, Skills
 
 
 class ProfileAdmin(admin.ModelAdmin):
@@ -18,8 +18,13 @@ class PhoneAdmin(admin.ModelAdmin):
 class ServicesAdmin(admin.ModelAdmin):
     list_display = ("profile", "name", "description")
 
+    
+class SkillsAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Email, EmailAdmin)
 admin.site.register(Phone, PhoneAdmin)
 admin.site.register(Services, ServicesAdmin)
+admin.site.register(Skills, SkillsAdmin)
