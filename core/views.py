@@ -2,7 +2,7 @@ import logging
 
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 
 from core.models import Email, Phone, Profile, Services
 
@@ -42,3 +42,19 @@ class IndexView(FormView):
         logger.warning(f"Tentativa de envio inválida: {form.errors.as_json()}")
         messages.error(self.request, "Erro ao enviar e-mail")
         return super(IndexView, self).form_invalid(form, *args, **kwargs)
+
+
+class NotFoundView(TemplateView):
+    template_name = "404.html"
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context, status=404)
+
+
+class ServerErrorView(TemplateView):
+    template_name = "500.html"
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context, status=500)
