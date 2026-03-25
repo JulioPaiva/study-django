@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Email, Phone, Profile, Services, Skills
+from .models import Email, Phone, Posts, Profile, Services, Skills
 
 
 class ProfileAdmin(admin.ModelAdmin):
@@ -18,9 +18,13 @@ class PhoneAdmin(admin.ModelAdmin):
 class ServicesAdmin(admin.ModelAdmin):
     list_display = ("profile", "name", "description")
 
-    
+
 class SkillsAdmin(admin.ModelAdmin):
     list_display = ("name",)
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ("title", "created_at")
 
 
 admin.site.register(Profile, ProfileAdmin)
@@ -28,3 +32,4 @@ admin.site.register(Email, EmailAdmin)
 admin.site.register(Phone, PhoneAdmin)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Skills, SkillsAdmin)
+admin.site.register(Posts, PostAdmin)
