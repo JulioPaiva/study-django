@@ -9,7 +9,7 @@
                 <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-item position-relative">
                         <div class="icon">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{post.image}}" />
+                            <img src="{{ post.image.medium.url }}" />
                         </div>
                         <h4><a href="{{ post.url }}" target="_blank" class="stretched-link">{{ post.title }}</a></h4>
                         <p>{{ post.description }}</p>

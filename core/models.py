@@ -1,4 +1,5 @@
 from django.db import models
+from stdimage import StdImageField
 
 
 class Base(models.Model):
@@ -91,11 +92,25 @@ class Skills(Base):
 
 
 class Posts(Base):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="posts")
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE,
+        related_name="posts"
+    )
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     url = models.URLField(blank=True)
-    image = models.CharField(max_length=200)
+    image = StdImageField(
+        upload_to="posts/",
+        blank=True,
+        null=True,
+        variations={
+            "medium": {
+                "width": 246,
+                "height": 201,
+                "crop": False
+            }
+        }
+    )
 
     def __str__(self):
         return self.title
