@@ -1,49 +1,115 @@
-# study-django
+# 🚀 Personal Portfolio & Blog (Django)
 
-## Templates HTML
-https://themeforest.net/
-https://onepagelove.com/
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Django](https://img.shields.io/badge/Django-4.x-green)
+![Tests](https://img.shields.io/badge/tests-pytest-yellow)
+![Lint](https://img.shields.io/badge/lint-ruff-purple)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+Projeto desenvolvido com foco em estudo, prática e evolução contínua como desenvolvedor backend com Python.
+
+A proposta é criar uma aplicação web completa que funcione como:
+
+- 🌐 Portfólio pessoal  
+- 📝 Blog técnico  
+- 🧠 Central de aprendizado  
+- 📬 Canal de contato  
+
+---
+
+## 🌐 Preview
+
+> Em breve 🚧
+
+---
+
+## 🎯 Objetivo
+
+Construir um projeto real, evolutivo e bem estruturado, aplicando boas práticas de desenvolvimento, organização de código e qualidade.
+
+---
+
+## 🧰 Tecnologias utilizadas
+
+- Python  
+- Django  
+- HTML / CSS  
+- SQLite (desenvolvimento)  
+- Poetry (gerenciamento de dependências)  
+- Ruff (lint)  
+- Pytest (testes)  
+
+---
+
+## ⚙️ Funcionalidades
+
+- [x] Página inicial com apresentação  
+- [x] Seção de Skills com ícones dinâmicos 
+- [x] Seção Sobre mim
+- [x] Seção de Posts
+- [x] Seção Contato
+- [x] Estrutura de perfil  
+- [x] Organização de templates  
+- [x] Configuração com Poetry  
+- [x] Lint com Ruff  
+- [x] Testes iniciais com Pytest  
+
+---
+
+## 🧱 Estrutura do projeto
+
+> Em breve 🚧
+
+---
+
+## 🔮 Testes
+
+O projeto utiliza **pytest** para testes automatizados:
+
+```bash
+make test
+```
+
+## 🚿 Lint
+
+O projeto utiliza **ruff** para garantir qualidade de código:
+
+```bash
+make lint
+```
 
 
-https://django-bootstrap5.readthedocs.io/en/latest/quickstart.html
+## 🚀 Como rodar o projeto
 
-https://meyerweb.com/eric/tools/css/reset/
+Instale as dependências, crie as _migrates_ para rodar o projeto:
+```bash
+poetry install
+make migrate
+make run-app
+```
+
+Para criar um usuário:
+
+```bash
+make create-superuser
+```
 
 
-from django.core.management.utils import get_random_secret_key
-print(get_random_secret_key())
+## 📚 Aprendizados
 
-https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4M6-obTZa8vlaJFSNlxIZO5XmlK_JWxOzBeYDXvhjLs1Or3mqgGlG_iw8HfUjcoTc9FTvL3jO59hCLoqEw793SBTzMcrzUvwBRozZHiwuf9qcUgYf4
+Este projeto é parte de um processo contínuo de aprendizado em:
+ - Arquitetura de aplicações web
+ - Boas práticas com Django
+ - Organização de projetos
+ - Testes automatizados
+ - Ferramentas modernas do ecossistema Python
 
 
-                       .,,uod8B8bou,,.                             
-              ..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:.                    
-         ,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||                   
-         !...:!TVBBBRPFT||||||||||!!^^""'   ||||                   
-         !.......:!?|||||!!^^""'            ||||                   
-         !.........||||                     ||||                   
-         !.........||||  # coding           ||||                   
-         !.........||||                     ||||                   
-         !.........||||                     ||||                   
-         !.........||||                     ||||                   
-         !.........||||                     ||||                   
-         `.........||||                    ,||||                   
-          .;.......||||               _.-!!|||||                   
-   .,uodWBBBBb.....||||       _.-!!|||||||||!:'                    
-!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb....               
-!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   `.             
-!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     `.           
-!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^"`;:::       `.         
-!........YBBBBBBBBBBRPFT?!::::::::::^''...::::::;         iBBbo.   
-`..........YBRPFT?!::::::::::::::::::::::::;iof68bo.      WBBBBbo. 
-  `..........:::::::::::::::::::::::;iof688888888888b.     `YBBBP^'
-    `........::::::::::::::::;iof688888888888888888888b.     `     
-      `......:::::::::;iof688888888888888888888888888888b.         
-        `....:::;iof688888888888888888888888888888888899fT!        
-          `..::!8888888888888888888888888888888899fT|!^"'          
-            `' !!988888888888888888888888899fT|!^"'                
-                `!!8888888888888888899fT|!^"'                      
-                  `!988888888899fT|!^"'                            
-                    `!9899fT|!^"'                                  
+## 👊 Contribuição
 
-https://github.com/coderjojo/creative-profile-readme?tab=readme-ov-file
+Este projeto é de uso pessoal para estudo, mas sugestões são bem-vindas.
+
+
+## 📃 Licença
+
+Este projeto está sob a licença MIT.
