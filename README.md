@@ -19,7 +19,7 @@ A proposta é criar uma aplicação web completa que funcione como:
 
 ## 🌐 Preview
 
-> Em breve 🚧
+> https://github.com/user-attachments/assets/f1b07bb2-132d-45c3-9394-b741cc1ce032
 
 ---
 
