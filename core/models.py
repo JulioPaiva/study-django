@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import signals
+from django.template.defaultfilters import slugify
 from stdimage import StdImageField
 
 
@@ -111,6 +113,13 @@ class Posts(Base):
             }
         }
     )
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
 
     def __str__(self):
         return self.title
+
+
+def post_pre_save(signal, instance, sender, **kwargs):
+    instance.slug = slugify(instance.title)
+
+signals.pre_save.connect(post_pre_save, sender=Posts)
