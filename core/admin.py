@@ -23,6 +23,7 @@ class SkillsAdmin(admin.ModelAdmin):
     list_display = ("name",)
 
 
+@admin.register(Posts)
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at")
 
@@ -32,4 +33,3 @@ admin.site.register(Email, EmailAdmin)
 admin.site.register(Phone, PhoneAdmin)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Skills, SkillsAdmin)
-admin.site.register(Posts, PostAdmin)
