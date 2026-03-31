@@ -126,8 +126,8 @@ USE_TZ = True
 STATIC_URL = "static/"  # development
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # production
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LOGOUT_REDIRECT_URL = "/"
 

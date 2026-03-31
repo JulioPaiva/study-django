@@ -22,19 +22,7 @@ def test_profile_creation(profile_payload: dict, profile_factory: Profile):
     assert profile_factory.updated_at is not None
     assert profile_factory.active is True
 
-    assert str(profile_factory) == (
-        f"{profile_payload['name']}"
-        f"{profile_payload['nickname']}"
-        f"{profile_payload['github']}"
-        f"{profile_payload['instagram']}"
-        f"{profile_payload['linkedin']}"
-        f"{profile_payload['video']}"
-        f"{profile_payload['brand']}"
-        f"{profile_payload['position']}"
-        f"{profile_payload['bio']}"
-        f"{profile_payload['message']}"
-        f"{profile_payload['welcome_message']}"
-    )
+    assert str(profile_factory) == f"{profile_payload['name']}"
 
 
 @pytest.mark.django_db

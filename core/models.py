@@ -28,20 +28,12 @@ class Profile(Base):
         "Mensagem de Boas-vindas", max_length=40, blank=True
     )
 
+    class Meta:
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfis"
+
     def __str__(self):
-        return (
-            f"{self.name}"
-            f"{self.nickname}"
-            f"{self.github}"
-            f"{self.instagram}"
-            f"{self.linkedin}"
-            f"{self.video}"
-            f"{self.brand}"
-            f"{self.position}"
-            f"{self.bio}"
-            f"{self.message}"
-            f"{self.welcome_message}"
-        )
+        return self.name
 
 
 class Email(Base):
@@ -53,6 +45,10 @@ class Email(Base):
         max_length=50, blank=True, help_text="Ex: Trabalho, Pessoal"
     )
     is_primary = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "E-mail"
+        verbose_name_plural = "E-mails"
 
     def __str__(self):
         return self.email
@@ -68,36 +64,45 @@ class Phone(Base):
     )
     is_primary = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = "Telefone"
+        verbose_name_plural = "Telefones"
+
     def __str__(self):
         return self.number
 
 
-class Services(Base):
+class Service(Base):
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, related_name="services"
     )
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
+    class Meta:
+        verbose_name = "Serviço"
+        verbose_name_plural = "Serviços"
+
     def __str__(self):
         return self.name
 
 
-class Skills(Base):
+class Skill(Base):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="stack")
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     image = models.CharField(max_length=200)
 
+    class Meta:
+        verbose_name = "Habilidade"
+        verbose_name_plural = "Habilidades"
+
     def __str__(self):
         return self.name
 
 
-class Posts(Base):
-    profile = models.ForeignKey(
-        Profile, on_delete=models.CASCADE,
-        related_name="posts"
-    )
+class Post(Base):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     url = models.URLField(blank=True)
@@ -105,15 +110,13 @@ class Posts(Base):
         upload_to="posts/",
         blank=True,
         null=True,
-        variations={
-            "medium": {
-                "width": 246,
-                "height": 201,
-                "crop": False
-            }
-        }
+        variations={"medium": {"width": 246, "height": 201, "crop": False}},
     )
     slug = models.SlugField(max_length=200, unique=True, blank=True)
+
+    class Meta:
+        verbose_name = "Post"
+        verbose_name_plural = "Posts"
 
     def __str__(self):
         return self.title
@@ -122,4 +125,5 @@ class Posts(Base):
 def post_pre_save(signal, instance, sender, **kwargs):
     instance.slug = slugify(instance.title)
 
-signals.pre_save.connect(post_pre_save, sender=Posts)
+
+signals.pre_save.connect(post_pre_save, sender=Post)

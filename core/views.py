@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
 
-from core.models import Email, Phone, Posts, Profile, Services, Skills
+from core.models import Email, Phone, Post, Profile, Service, Skill
 
 from .forms import ContactForm
 
@@ -19,13 +19,15 @@ class IndexView(FormView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context["profile"] = Profile.objects.first()
-        context["services"] = Services.objects.filter(profile=context["profile"])
+        context["services"] = Service.objects.filter(profile=context["profile"])
         context["emails"] = Email.objects.filter(profile=context["profile"])
         context["phones"] = Phone.objects.filter(profile=context["profile"])
-        context["skills"] = Skills.objects.filter(profile=context["profile"]).order_by(
-            "?"
-        )
-        context["posts"] = Posts.objects.filter(profile=context["profile"])
+        context["skills"] = Skill.objects.filter(
+            profile=context["profile"]
+        ).order_by("?")
+        context["posts"] = Post.objects.filter(
+            profile=context["profile"]
+        ).order_by("?")
 
         return context
 

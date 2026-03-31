@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Email, Phone, Posts, Profile, Services, Skills
+from .models import Email, Phone, Post, Profile, Service, Skill
 
 
 @admin.register(Profile)
@@ -18,16 +18,16 @@ class PhoneAdmin(admin.ModelAdmin):
     list_display = ("profile", "number", "label", "is_primary")
 
 
-@admin.register(Services)
+@admin.register(Service)
 class ServicesAdmin(admin.ModelAdmin):
     list_display = ("profile", "name", "description")
 
 
-@admin.register(Skills)
+@admin.register(Skill)
 class SkillsAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name", "image")
 
 
-@admin.register(Posts)
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at")
