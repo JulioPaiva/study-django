@@ -18,10 +18,10 @@
           </a>
           <div class="footer-contact pt-3">
             <p>Franca SP</p>
-            {% for phone in phones %}
+            {% for phone in profile.phones.all %}
               <p class="mt-3"><strong>Telefone:</strong> <span>{{phone.number}}</span></p>
             {% endfor %}
-            {% for email in emails %}
+            {% for email in profile.emails.all %}
               <p><strong>Email:</strong> <span>{{email.email}}</span></p>
             {% endfor %}
           </div>

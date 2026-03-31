@@ -14,7 +14,7 @@
                         <i class="bi bi-telephone flex-shrink-0"></i>
                         <div>
                             <h3>Ligue</h3>
-                            {% for phone in phones %}
+                            {% for phone in profile.phones.all %}
                                 <p>{{phone.number}}</p>
                             {% endfor %}
                         </div>
@@ -23,7 +23,7 @@
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h3>Email</h3>
-                            {% for email in emails %}
+                            {% for email in profile.emails.all %}
                                 <p>{{email.email}}</p>
                             {% endfor %}
                         </div>
