@@ -68,3 +68,10 @@ django-shell:
 
 collectstatic:
 	poetry run python manage.py collectstatic
+
+
+docker-compose-up:
+	docker-compose up -d
+
+docker-compose-down:
+	docker-compose down

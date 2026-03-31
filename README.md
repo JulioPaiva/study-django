@@ -94,6 +94,16 @@ Para criar um usuário:
 make create-superuser
 ```
 
+# PostgreSQL com Docker
+
+Ambiente de banco de dados PostgreSQL usando Docker para desenvolvimento e portfólio.
+
+## 🚀 Subir ambiente
+
+```bash
+docker-compose up -d
+```
+
 
 ## 📚 Aprendizados
 
