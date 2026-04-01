@@ -8,7 +8,7 @@
             <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
                 <p>{{profile.message}}</p>
                 <ul>
-                    {% for service in services %}
+                    {% for service in profile.services.all %}
                         <li><i class="bi bi-check2-circle"></i> <span>{{service.name}}</span></li>
                     {% endfor %}
                 </ul>
