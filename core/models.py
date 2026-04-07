@@ -128,7 +128,7 @@ class Post(Base):
         upload_to="posts/",
         blank=True,
         null=True,
-        variations={"medium": {"width": 460, "height": 310, "crop": False}},
+        variations={"medium": {"width": 460, "height": 310, "crop": True}},
     )
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY, default="Other")
