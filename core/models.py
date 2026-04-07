@@ -110,6 +110,15 @@ class Skill(Base):
 
 
 class Post(Base):
+    CATEGORY = (
+        ("backend", "Backend"),
+        ("arquitetura", "Arquitetura"),
+        ("dados", "Dados & Busca"),
+        ("devops", "DevOps"),
+        ("aprendizado", "Aprendizado"),
+        ("reflexoes", "Reflexões"),
+        ("ferramentas", "Ferramentas"),
+    )
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
@@ -118,9 +127,10 @@ class Post(Base):
         upload_to="posts/",
         blank=True,
         null=True,
-        # variations={"medium": {"width": 246, "height": 201, "crop": False}},
+        variations={"medium": {"width": 460, "height": 310, "crop": False}},
     )
     slug = models.SlugField(max_length=200, unique=True, blank=True)
+    category = models.CharField(max_length=20, choices=CATEGORY, default="Other")
 
     class Meta:
         verbose_name = "Post"
