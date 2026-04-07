@@ -68,3 +68,12 @@ django-shell:
 
 collectstatic:
 	poetry run python manage.py collectstatic
+
+
+makemessages:
+	poetry run python manage.py makemessages -l en -l es
+
+compilemessages:
+	poetry run python manage.py compilemessages
+
+translations: makemessages compilemessages

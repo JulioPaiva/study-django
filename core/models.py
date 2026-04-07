@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import signals
 from django.template.defaultfilters import slugify
+from django.utils.translation import gettext_lazy as _
 from stdimage import StdImageField
 
 
@@ -21,11 +22,11 @@ class Profile(Base):
     linkedin = models.URLField(blank=True)
     video = models.URLField(blank=True)
     brand = models.CharField("Marca", max_length=10, blank=True)
-    position = models.CharField("Cargo", max_length=100, blank=True)
-    bio = models.TextField(blank=True)
-    message = models.TextField(max_length=200, blank=True)
+    position = models.CharField(_("Cargo"), max_length=100, blank=True)
+    bio = models.TextField(_("Biografia"), blank=True)
+    message = models.TextField(_("Mensagem"), max_length=200, blank=True)
     welcome_message = models.CharField(
-        "Mensagem de Boas-vindas", max_length=40, blank=True
+        _("Mensagem de Boas-vindas"), max_length=40, blank=True
     )
 
     class Meta:

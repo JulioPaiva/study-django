@@ -3575,3 +3575,15 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+.dropdown ul button {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  width: 90%;
+  padding: 10px;
+}
+
+.dropdown ul button:hover {
+  background-color: #f5f5f5;
+}

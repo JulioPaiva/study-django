@@ -41,9 +41,29 @@
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Profile</a></li>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#contact">Contato</a></li>
+          {% load i18n %}
+          <li><a href="#hero" class="active">{% trans "Profile" %}</a></li>
+          <li><a href="#about">{% trans "Sobre" %}</a></li>
+          <li><a href="#contact">{% trans "Contato" %}</a></li>
+          <li class="dropdown">
+            <a href="#"><span>{% trans "Língua" %}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+
+                <li>
+                    <button type="submit" name="language" value="pt-br">🇧🇷 PT-BR</button>
+                </li>
+                <li>
+                    <button type="submit" name="language" value="en">🇺🇸 EN-US</button>
+                </li>
+                <li>
+                    <button type="submit" name="language" value="es">🇪🇸 ES-ES</button>
+                </li>
+                </form>
+            </ul>
+          </li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

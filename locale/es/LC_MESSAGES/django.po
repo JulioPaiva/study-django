@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-07 02:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+#: core/models.py:25
+msgid "Cargo"
+msgstr "Posición"
+
+#: core/models.py:26
+msgid "Biografia"
+msgstr "Biografía"
+
+#: core/models.py:27
+msgid "Mensagem"
+msgstr "Mensaje"
+
+#: core/models.py:29
+msgid "Mensagem de Boas-vindas"
+msgstr "Mensaje de bienvenida"
+
+#: core/templates/base.html:45
+msgid "Profile"
+msgstr "Perfil"
+
+#: core/templates/base.html:46
+msgid "Sobre"
+msgstr "En"
+
+#: core/templates/base.html:47
+msgid "Contato"
+msgstr "Contacto"
+
+#: core/templates/base.html:49
+msgid "Língua"
+msgstr "Linguaate"
+
+#: core/templates/profile.html:8
+msgid "Seja Bem-Vindo(a)!"
+msgstr "¡Bienvenido!"
+
+#: core/templates/profile.html:18
+msgid "Assista ao vídeo"
+msgstr "Mira el vídeo"

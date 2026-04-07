@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 
 <section id="hero" class="hero section dark-background">
     <div class="container">
         <div class="row gy-4">
             <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-                <h1>Seja Bem-Vindo(a)!</h1>
+                <h1>{% trans "Seja Bem-Vindo(a)!" %}</h1>
                 {% if profile %}
                     <p><b> {{profile.nickname}}</b> - {{profile.position}}</p>
                 {% else %}
@@ -14,7 +15,7 @@
                 {% if profile %}
                     <a href="{{profile.github}}" target="_blank" class="btn-get-started">GitHub</a>
                     <a href="{{profile.video}}" class="glightbox btn-watch-video d-flex align-items-center">
-                        <i class="bi bi-play-circle"></i><span>Assita ao Vídeo</span>
+                        <i class="bi bi-play-circle"></i><span>{% trans "Assista ao vídeo" %}</span>
                     </a>
                 {% endif %}
                 </div>
