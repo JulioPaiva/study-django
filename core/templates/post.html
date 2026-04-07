@@ -1,21 +1,35 @@
 {% load static %}
-<section id="services" class="services section light-background">
+<section id="recent-blog-postst" class="recent-blog-postst section light-background">
     <div class="container section-title" data-aos="fade-up">
         <h2>Confira nossos posts</h2>
+        <p>Você vai amar esse conteúdo! 🔥</p>
     </div>
     <div class="container">
-        <div class="row gy-4">
+        <div class="row gy-5">
             {% for post in profile.posts.all %}
-                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-item position-relative">
-                        <div class="icon">
-                            <img src="{{ post.image.medium.url }}" />
+                <div class="col-xl-4 col-md-6">
+                    <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+                        <div class="post-img position-relative overflow-hidden">
+                            <img src="{{ post.image.url }}" class="img-fluid" alt="">
+                            {% comment %} <span class="post-date">{{ post.created_at|date:"F d" }}</span> {% endcomment %}
+                    </div>
+                    <div class="post-content d-flex flex-column">
+                        <h3 class="post-title">{{ post.title }}</h3>
+                        {% comment %} <div class="meta d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
                         </div>
-                        <h4><a href="{{ post.url }}" target="_blank" class="stretched-link">{{ post.title }}</a></h4>
-                        <p>{{ post.description }}</p>
+                        <span class="px-3 text-black-50">/</span>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                        </div>
+                        </div> {% endcomment %}
+                        <hr>
+                        <a href="{{ post.url }}" class="readmore stretched-link"><span>Saiba mais</span><i class="bi bi-arrow-right"></i></a>
+                    </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
-    </div>
+      </div>
 </section>
