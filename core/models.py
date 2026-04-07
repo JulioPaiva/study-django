@@ -94,7 +94,12 @@ class Skill(Base):
     )
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    image = models.CharField(max_length=200)
+    image = StdImageField(
+        upload_to="skills/",
+        blank=True,
+        null=True,
+        variations={"medium": {"width": 108, "height": 55, "crop": False}},
+    )
 
     class Meta:
         verbose_name = "Habilidade"
