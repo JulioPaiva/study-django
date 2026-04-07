@@ -79,6 +79,7 @@ class Service(Base):
     )
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
+    icon = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name = "Serviço"
