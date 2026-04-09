@@ -146,3 +146,14 @@ def post_pre_save(signal, instance, sender, **kwargs):
 
 
 signals.pre_save.connect(post_pre_save, sender=Post)
+
+
+class Newsletter(Base):
+    email = models.EmailField(unique=True)
+
+    class Meta:
+        verbose_name = "Newsletter"
+        verbose_name_plural = "Newsletters"
+
+    def __str__(self):
+        return self.email

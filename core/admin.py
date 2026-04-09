@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Email, Phone, Post, Profile, Service, Skill
+from .models import Email, Newsletter, Phone, Post, Profile, Service, Skill
 
 
 @admin.register(Profile)
@@ -31,3 +31,8 @@ class SkillsAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at")
+
+
+@admin.register(Newsletter)
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = ("email", "created_at")

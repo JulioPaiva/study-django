@@ -1,46 +1,81 @@
 import logging
 
 from django.contrib import messages
-from django.urls import reverse_lazy
-from django.views.generic import FormView, TemplateView
+from django.shortcuts import redirect
+
+# from django.urls import reverse_lazy
+from django.views.generic import TemplateView
 
 from core.models import Profile
 
-from .forms import ContactForm
+from .forms import ContactForm, NewsletterForm
 
 logger = logging.getLogger("app")
 
 
-class IndexView(FormView):
+class IndexView(TemplateView):
     template_name = "index.html"
-    form_class = ContactForm
-    success_url = reverse_lazy("index")
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
+
+        context["contact_form"] = kwargs.get("contact_form", ContactForm())
+        context["newsletter_form"] = kwargs.get("newsletter_form", NewsletterForm())
+
         context["profile"] = Profile.objects.prefetch_related(
             "services", "emails", "phones", "skills", "posts"
         ).first()
 
         return context
 
-    def form_valid(self, form, *args, **kwargs):
-        try:
-            form.send_mail()
-            messages.success(self.request, "E-mail enviado com sucesso!")
-            logger.info("Fluxo de contato finalizado com sucesso.")
+    def post(self, request, *args, **kwargs):
+        if "contact_form" in request.POST:
+            contact_form = ContactForm(request.POST)
+            newsletter_form = NewsletterForm()
 
-        except Exception as e:
-            logger.error(f"Erro ao enviar e-mail. Erro: {str(e)}", exc_info=True)
-            messages.error(self.request, "Erro ao enviar e-mail")
-            raise e
+            if contact_form.is_valid():
+                try:
+                    contact_form.send_mail()
+                    messages.success(self.request, "E-mail enviado com sucesso!")
+                    logger.info("Fluxo de contato finalizado com sucesso.")
+                except Exception as e:
+                    logger.error(
+                        f"Erro ao enviar e-mail. Erro: {str(e)}", exc_info=True
+                    )
+                    messages.error(self.request, "Erro ao enviar e-mail")
+                    raise
 
-        return super(IndexView, self).form_valid(form, *args, **kwargs)
+            return self.render_to_response(
+                self.get_context_data(
+                    contact_form=ContactForm(), newsletter_form=newsletter_form
+                )
+            )
 
-    def form_invalid(self, form, *args, **kwargs):
-        logger.warning(f"Tentativa de envio inválida: {form.errors.as_json()}")
-        messages.error(self.request, "Erro ao enviar e-mail")
-        return super(IndexView, self).form_invalid(form, *args, **kwargs)
+        elif "newsletter_form" in request.POST:
+            newsletter_form = NewsletterForm(request.POST)
+            contact_form = ContactForm()
+            if newsletter_form.is_valid():
+                newsletter_form.save()
+                messages.success(
+                    request, "Inscrição na newsletter realizada com sucesso!"
+                )
+                logger.info(
+                    "Nova inscrição na newsletter: %s",
+                    newsletter_form.cleaned_data["email"],
+                )
+
+                return redirect("index")
+
+            return self.render_to_response(
+                self.get_context_data(
+                    contact_form=contact_form, newsletter_form=NewsletterForm()
+                )
+            )
+
+        else:
+            logger.warning("Erro ao encontrar o formulário.")
+            messages.error(request, "Erro ao enviar formulário")
+            return redirect("index")
 
 
 class NotFoundView(TemplateView):

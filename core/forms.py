@@ -5,6 +5,8 @@ from django.conf import settings
 from django.core.mail.message import EmailMessage
 from django.template.loader import render_to_string
 
+from core.models import Newsletter
+
 logger = logging.getLogger("app")
 
 
@@ -43,3 +45,14 @@ class ContactForm(forms.Form):
         except Exception as e:
             logger.error(f"Erro ao enviar e-mail. Erro: {str(e)}", exc_info=True)
             raise e
+
+
+class NewsletterForm(forms.Form):
+    email = forms.EmailField(label="Email", max_length=100)
+
+    def save(self):
+        email = self.cleaned_data["email"]
+        newsletter = Newsletter(email=email)
+        newsletter.save()
+
+        return newsletter
